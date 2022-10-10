@@ -15,7 +15,7 @@ public class Main extends Application {
         loader.setLocation(getClass().getResource("/view/LogInScene.fxml"));
         Parent root = loader.load();
         primaryStage.getIcons().add(new Image("https://cdn-icons-png.flaticon.com/512/1611/1611179.png"));
-
+//2
         primaryStage.setTitle("BankingApp");
         primaryStage.setScene(new Scene(root));
         primaryStage.setResizable(false);
