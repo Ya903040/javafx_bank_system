@@ -8,7 +8,7 @@ public class Customer {
     private String email;
     private String password;
     private float balance;
-//1
+
     public Customer( int id, String firstName, String lastName, String email, String password, float balance) {
         this.id = id;
         this.firstName = firstName;
