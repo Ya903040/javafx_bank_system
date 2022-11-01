@@ -41,26 +41,27 @@ public class WithdrawalSceneController implements Initializable {
     private CustomerDbUtil customerDbUtil;
 
     @FXML
-    Label withdrawalValueLabel,errorLabel;
+    Label withdrawalValueLabel, errorLabel;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-         customerDbUtil = new CustomerDbUtil();
+        customerDbUtil = new CustomerDbUtil();
     }
 
     public Customer getCustomer() {
         return customer;
     }
 
-    public void setCustomer(Customer customer){
+    public void setCustomer(Customer customer) {
         this.customer = customer;
     }
-//1
-    public String getWithdrawalValueLabel(){
+
+    //1
+    public String getWithdrawalValueLabel() {
         return this.withdrawalValueLabel.getText(); //something like $2500.00
     }
 
-    public void setWithdrawalValueLabel(String number){ //TODO: PROBLEM
+    public void setWithdrawalValueLabel(String number) {
         this.withdrawalValueLabel.setText(number);
     }
 
@@ -95,19 +96,19 @@ public class WithdrawalSceneController implements Initializable {
         }
     }
 
-    public void withdraw(ActionEvent event){
+    public void withdraw(ActionEvent event) {
 
         float currentWithdrawalAmount = Float.parseFloat(getWithdrawalValueLabel().substring(1));
-        float customerFundsAfterWithdrawal = getCustomer().getBalance()-currentWithdrawalAmount;
+        float customerFundsAfterWithdrawal = getCustomer().getBalance() - currentWithdrawalAmount;
 
 
-        if (currentWithdrawalAmount <= getCustomer().getBalance()){
+        if (currentWithdrawalAmount <= getCustomer().getBalance()) {
 
             // set Customer balance inside the app
             getCustomer().setBalance(customerFundsAfterWithdrawal);
 
             // set Customer balance inside Database
-            getCustomerDbUtil().updateBalance(customerFundsAfterWithdrawal,getCustomer().getId());
+            getCustomerDbUtil().updateBalance(customerFundsAfterWithdrawal, getCustomer().getId());
 
             // switch scene
             switchToBankingScene(event);
@@ -115,25 +116,27 @@ public class WithdrawalSceneController implements Initializable {
             setErrorLabel("NOT ENOUGH FUNDS");
         }
     }
-    public void back(ActionEvent event){
+
+    public void back(ActionEvent event) {
         switchToBankingScene(event);
     }
-    public void reset(){
+
+    public void reset() {
         setWithdrawalValueLabel("$0.00");
     }
 
-    public void switchToBankingScene(ActionEvent event){
+    public void switchToBankingScene(ActionEvent event) {
         try {
 
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/view/BankingScene.fxml"));
             Parent root = loader.load();
 
-            BankingSceneController bankingSceneController=loader.getController();
+            BankingSceneController bankingSceneController = loader.getController();
 
             bankingSceneController.setCustomer(getCustomer());
 
-            Stage stage =(Stage)((Node)event.getSource()).getScene().getWindow();
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
@@ -142,7 +145,6 @@ public class WithdrawalSceneController implements Initializable {
             e.printStackTrace();
         }
     }
-
 
 
 }

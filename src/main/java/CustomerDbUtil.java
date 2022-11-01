@@ -10,7 +10,7 @@ import java.sql.Statement;
 public class CustomerDbUtil {
 
     // this method definitely works
-    public Connection connect(){
+    public Connection connect() {
         Connection con = null;
 
         try {
@@ -27,7 +27,7 @@ public class CustomerDbUtil {
     // this method definitely works
     public Customer logIn(String email, String password) {
 
-        Connection con=connect();
+        Connection con = connect();
         PreparedStatement stmt = null;
         ResultSet rs = null;
 
@@ -38,28 +38,28 @@ public class CustomerDbUtil {
             // prep statement
             stmt = con.prepareStatement(sql);
 
-            stmt.setString(1,email);
-            stmt.setString(2,password);
+            stmt.setString(1, email);
+            stmt.setString(2, password);
 
             rs = stmt.executeQuery();
 
-            if (rs.next()){
+            if (rs.next()) {
                 int id = rs.getInt("id");
                 String firstName = rs.getString("first_name");
                 String lastName = rs.getString("last_name");
                 float balance = rs.getFloat("balance");
 
-                return new Customer(id,firstName,lastName,email,password,balance); //WORKS!
+                return new Customer(id, firstName, lastName, email, password, balance); //WORKS!
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
 
         } finally {
-            close(con,stmt,rs);
-    }
+            close(con, stmt, rs);
+        }
         return null;
-}
+    }
 
     public void register(String firstName, String lastName, String email, String password) {
         Connection con = connect();
@@ -80,14 +80,13 @@ public class CustomerDbUtil {
 
         } catch (SQLException e) {
             e.printStackTrace();
-        }
-        finally {
-            close(con,stmt,null);
+        } finally {
+            close(con, stmt, null);
         }
     }
 
     // update balance - used for both deposit and withdrawal
-    public void updateBalance(float newBalance, int id){
+    public void updateBalance(float newBalance, int id) {
         Connection con = connect();
         PreparedStatement stmt = null;
 
@@ -100,15 +99,14 @@ public class CustomerDbUtil {
 
             stmt.executeUpdate();
 
-        } catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
-        }
-        finally {
-            close(con,stmt,null);
+        } finally {
+            close(con, stmt, null);
         }
     }
 
-    public void receiveTransfer(float moneyToAdd, int id){
+    public void receiveTransfer(float moneyToAdd, int id) {
         Connection con = connect();
         PreparedStatement stmt = null;
 
@@ -121,18 +119,17 @@ public class CustomerDbUtil {
 
             stmt.executeUpdate();
 
-        } catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
-        }
-        finally {
-            close(con,stmt,null);
+        } finally {
+            close(con, stmt, null);
         }
     }
 
     // query that checks if a user exists
     public boolean customerExists(int id) {
 
-        Connection con=connect();
+        Connection con = connect();
         PreparedStatement stmt = null;
         ResultSet rs = null;
 
@@ -143,12 +140,12 @@ public class CustomerDbUtil {
             // prep statement
             stmt = con.prepareStatement(sql);
 
-            stmt.setInt(1,id);
+            stmt.setInt(1, id);
 
 
             rs = stmt.executeQuery();
 
-            if (rs.next()){
+            if (rs.next()) {
                 return true;
             }
 
@@ -156,24 +153,24 @@ public class CustomerDbUtil {
             e.printStackTrace();
 
         } finally {
-            close(con,stmt,rs);
+            close(con, stmt, rs);
         }
         return false;
     }
 
 
-    private void close(Connection con, Statement stmt, ResultSet rs){
+    private void close(Connection con, Statement stmt, ResultSet rs) {
         try {
             if (rs != null) {
                 rs.close();
             }
-            if (stmt != null){
+            if (stmt != null) {
                 stmt.close();
             }
             if (con != null) {
                 con.close();
             }
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

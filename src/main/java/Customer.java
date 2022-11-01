@@ -9,7 +9,7 @@ public class Customer {
     private String password;
     private float balance;
 
-    public Customer( int id, String firstName, String lastName, String email, String password, float balance) {
+    public Customer(int id, String firstName, String lastName, String email, String password, float balance) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -34,7 +34,7 @@ public class Customer {
         this.balance = balance;
     }
 
-    public int getId(){
+    public int getId() {
         return this.id;
     }
 

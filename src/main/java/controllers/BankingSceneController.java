@@ -24,13 +24,13 @@ public class BankingSceneController {
 
 
     @FXML
-    private Label nameLabel,balanceLabel,idLabel;
+    private Label nameLabel, balanceLabel, idLabel;
 
     private Customer customer;
 
 
     // TODO: find a way to remove boiler code when switching scenes
-    public void deposit(ActionEvent event){
+    public void deposit(ActionEvent event) {
         try {
 
             FXMLLoader loader = new FXMLLoader();
@@ -38,10 +38,10 @@ public class BankingSceneController {
             Parent root = loader.load();
 
             // send customer info to next scene
-            DepositSceneController depositSceneController=loader.getController();
+            DepositSceneController depositSceneController = loader.getController();
             depositSceneController.setCustomer(getCustomer());
 
-            Stage stage =(Stage)((Node)event.getSource()).getScene().getWindow();
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
@@ -51,7 +51,7 @@ public class BankingSceneController {
         }
     }
 
-    public void withdrawal(ActionEvent event){
+    public void withdrawal(ActionEvent event) {
         try {
 
             FXMLLoader loader = new FXMLLoader();
@@ -59,10 +59,10 @@ public class BankingSceneController {
             Parent root = loader.load();
 
             // send customer info to next scene
-            WithdrawalSceneController withdrawalSceneController=loader.getController();
+            WithdrawalSceneController withdrawalSceneController = loader.getController();
             withdrawalSceneController.setCustomer(getCustomer());
 
-            Stage stage =(Stage)((Node)event.getSource()).getScene().getWindow();
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
@@ -84,7 +84,7 @@ public class BankingSceneController {
         this.idLabel.setText(text);
     }
 
-    public void transfer(ActionEvent event){
+    public void transfer(ActionEvent event) {
         try {
 
             FXMLLoader loader = new FXMLLoader();
@@ -92,10 +92,10 @@ public class BankingSceneController {
             Parent root = loader.load();
 
             // send customer info to next scene
-            TransferSceneController transferSceneController=loader.getController();
+            TransferSceneController transferSceneController = loader.getController();
             transferSceneController.setCustomer(getCustomer());
 
-            Stage stage =(Stage)((Node)event.getSource()).getScene().getWindow();
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
@@ -104,15 +104,16 @@ public class BankingSceneController {
             e.printStackTrace();
         }
     }
-//1
-    public void switchToLogInScene(ActionEvent event){
+
+    //1
+    public void switchToLogInScene(ActionEvent event) {
         try {
 
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/view/LogInScene.fxml"));
             Parent root = loader.load();
 
-            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);
             stage.setScene(scene);
         } catch (IOException e) {
@@ -120,14 +121,14 @@ public class BankingSceneController {
         }
     }
 
-    public void setCustomer(Customer customer){
+    public void setCustomer(Customer customer) {
         this.customer = customer;
-        setNameLabel("Name: "+getCustomer().getFirstName()+" "+getCustomer().getLastName());
-        setBalanceLabel("Balance: "+ Helper.formatCurrency(getCustomer().getBalance()));
-        setIdLabel("Identification number: "+ getCustomer().getId());
+        setNameLabel("Name: " + getCustomer().getFirstName() + " " + getCustomer().getLastName());
+        setBalanceLabel("Balance: " + Helper.formatCurrency(getCustomer().getBalance()));
+        setIdLabel("Identification number: " + getCustomer().getId());
     }
 
-    public Customer getCustomer(){
+    public Customer getCustomer() {
         return this.customer;
     }
 

@@ -8,5 +8,12 @@
       <jdbc-url>jdbc:sqlite:C:\Users\user\Documents\раные доки\разные проекты\BankingApp\src\main\resources\database\CustomersDB.db</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
+    <data-source source="LOCAL" name="CustomersDB [2]" uuid="2a8d7bbd-c438-4da9-84c9-7da9e876ccd5">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:C:\Users\user\IdeaProjects\javafx_bank_system\src\main\resources\database\CustomersDB.db</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
   </component>
 </project>

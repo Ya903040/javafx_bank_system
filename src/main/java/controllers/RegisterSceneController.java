@@ -24,7 +24,7 @@ public class RegisterSceneController implements Initializable {
     private CustomerDbUtil customerDbUtil;
 
     @FXML
-    Button registerButton,backButton;
+    Button registerButton, backButton;
 
     @FXML
     TextField firstNameTextField, lastNameTextField, emailTextField;
@@ -37,14 +37,14 @@ public class RegisterSceneController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        customerDbUtil=new CustomerDbUtil();
+        customerDbUtil = new CustomerDbUtil();
     }
 
     public void setErrorLabel(String text) {
         this.errorLabel.setText(text);
     }
 
-    public void register(ActionEvent event){
+    public void register(ActionEvent event) {
         String firstName = firstNameTextField.getText();
         String lastName = lastNameTextField.getText();
         String email = emailTextField.getText();
@@ -62,18 +62,18 @@ public class RegisterSceneController implements Initializable {
         }
     }
 
-    public void switchToLogInScene(ActionEvent event){
-            try {
+    public void switchToLogInScene(ActionEvent event) {
+        try {
 //1
-                FXMLLoader loader = new FXMLLoader();
-                loader.setLocation(getClass().getResource("/view/LogInScene.fxml"));
-                Parent root = loader.load();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/view/LogInScene.fxml"));
+            Parent root = loader.load();
 
-                Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-                Scene scene = new Scene(root);
-                stage.setScene(scene);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
+}

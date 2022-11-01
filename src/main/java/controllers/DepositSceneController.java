@@ -46,10 +46,10 @@ public class DepositSceneController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        customerDbUtil=new CustomerDbUtil();
+        customerDbUtil = new CustomerDbUtil();
     }
 
-    public float getMoneyToDeposit(){
+    public float getMoneyToDeposit() {
         return this.moneyToDeposit;
     }
 
@@ -61,23 +61,23 @@ public class DepositSceneController implements Initializable {
         return customer;
     }
 
-    public void setCustomer(Customer customer){
+    public void setCustomer(Customer customer) {
         this.customer = customer;
     }
 
-    public void setDepositValueLabel(String text){
+    public void setDepositValueLabel(String text) {
         this.depositValueLabel.setText(text);
     }
 
     //TODO: TESTING
-    public void processDeposit(ActionEvent event){
+    public void processDeposit(ActionEvent event) {
 
         // get value to be added without the '+' symbol
         float buttonPressed = Float.parseFloat(((Button) event.getSource()).getText().substring(1));
-        float newMoneyToDeposit = getMoneyToDeposit()+buttonPressed;
+        float newMoneyToDeposit = getMoneyToDeposit() + buttonPressed;
 
 
-        if (newMoneyToDeposit <= 2000){
+        if (newMoneyToDeposit <= 2000) {
             setMoneyToDeposit(newMoneyToDeposit);
             setDepositValueLabel(Helper.formatCurrency(newMoneyToDeposit));
         } else {
@@ -85,37 +85,38 @@ public class DepositSceneController implements Initializable {
         }
     }
 
-    public void reset(){
-        this.moneyToDeposit=0;
+    public void reset() {
+        this.moneyToDeposit = 0;
         depositValueLabel.setText(Helper.formatCurrency(getMoneyToDeposit()));
     }
 
-    public void deposit(ActionEvent event){
+    public void deposit(ActionEvent event) {
         // previous balance + new deposit
-        float updatedCustomerBalance = getCustomer().getBalance()+getMoneyToDeposit();
+        float updatedCustomerBalance = getCustomer().getBalance() + getMoneyToDeposit();
 
         // update database balance
-        customerDbUtil.updateBalance(updatedCustomerBalance,getCustomer().getId());
+        customerDbUtil.updateBalance(updatedCustomerBalance, getCustomer().getId());
 
         // update currently logged Customer's balance inside the app
         getCustomer().setBalance(updatedCustomerBalance);
 
         switchToBankingScene(event);
     }
-//1
+
+    //1
     //boiler
-    public void switchToBankingScene(ActionEvent event){
+    public void switchToBankingScene(ActionEvent event) {
         try {
 
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/view/BankingScene.fxml"));
             Parent root = loader.load();
 
-            BankingSceneController bankingSceneController=loader.getController();
+            BankingSceneController bankingSceneController = loader.getController();
 
             bankingSceneController.setCustomer(getCustomer());
 
-            Stage stage =(Stage)((Node)event.getSource()).getScene().getWindow();
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
@@ -124,6 +125,7 @@ public class DepositSceneController implements Initializable {
             e.printStackTrace();
         }
     }
+
     // Customers can only deposit up to 2,000 at once
     public void displayError() {
         this.errorLabel.setText("You cannot deposit more than 2,000!");

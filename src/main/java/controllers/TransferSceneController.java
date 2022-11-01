@@ -55,7 +55,7 @@ public class TransferSceneController implements Initializable {
         upGreyArrow = new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/upGreyArrow.png"))));
         downGreyArrow = new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/downGreyArrow.png"))));
 
-        customerDbUtil= new CustomerDbUtil();
+        customerDbUtil = new CustomerDbUtil();
 
         transactionButton.setGraphic(upGreenArrow);
         idButton.setGraphic(downGreyArrow);
@@ -70,13 +70,15 @@ public class TransferSceneController implements Initializable {
         return customer;
     }
 
-    public String getTransactionValueLabel(){
+    public String getTransactionValueLabel() {
         return this.transactionValueLabel.getText();
     }
-    public int getReceiverIdLabel(){
+
+    public int getReceiverIdLabel() {
         return Integer.parseInt(this.receiverIdLabel.getText());
     }
-    public void setTransactionValueLabel(String number){ //TODO: PROBLEM
+
+    public void setTransactionValueLabel(String number) {
         this.transactionValueLabel.setText(number);
     }
 
@@ -92,7 +94,7 @@ public class TransferSceneController implements Initializable {
         this.receiverIdLabel.setText(receiverIdLabel);
     }
 
-    public void setErrorLabel(String text){
+    public void setErrorLabel(String text) {
         this.errorLabel.setText(text);
     }
 
@@ -101,7 +103,7 @@ public class TransferSceneController implements Initializable {
         // get Button pressed
         String buttonDigit = ((Button) event.getSource()).getText();
 
-        if (getLabelUsed()){
+        if (getLabelUsed()) {
 
             //  get withdrawal label without '$' symbol in int
             String currentWithdrawalAmount = Helper.toCleanNumber(getTransactionValueLabel().substring(1));
@@ -124,15 +126,15 @@ public class TransferSceneController implements Initializable {
             if ((currentIdNumber + buttonDigit).length() > 3) {
                 setErrorLabel("ID CANNOT BE HIGHER THAN 999!");
                 setReceiverIdLabel("999");
-            } else if (Integer.parseInt(currentIdNumber)==0) {
+            } else if (Integer.parseInt(currentIdNumber) == 0) {
                 setReceiverIdLabel(buttonDigit);
             } else {
-                setReceiverIdLabel(currentIdNumber+buttonDigit);
+                setReceiverIdLabel(currentIdNumber + buttonDigit);
             }
         }
     }
 
-    public void back(ActionEvent event){
+    public void back(ActionEvent event) {
         switchToBankingScene(event);
     }
 
@@ -144,6 +146,7 @@ public class TransferSceneController implements Initializable {
             setReceiverIdLabel("0");
         }
     }
+
     public void setCustomer(Customer customer) {
         this.customer = customer;
     }
@@ -180,16 +183,16 @@ public class TransferSceneController implements Initializable {
         }
     }
 
-    public void switchToTransactionLabel(){
-        if (getLabelUsed()){
+    public void switchToTransactionLabel() {
+        if (getLabelUsed()) {
             setLabelUsed(false);
             transactionButton.setGraphic(upGreyArrow);
             idButton.setGraphic(downGreenArrow);
         }
     }
 
-    public void switchToReceiverIdLabel(){
-        if (!getLabelUsed()){
+    public void switchToReceiverIdLabel() {
+        if (!getLabelUsed()) {
             setLabelUsed(true);
             transactionButton.setGraphic(upGreenArrow);
             idButton.setGraphic(downGreyArrow);
@@ -197,18 +200,18 @@ public class TransferSceneController implements Initializable {
     }
 
 
-    public void switchToBankingScene(ActionEvent event){
+    public void switchToBankingScene(ActionEvent event) {
         try {
 
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/view/BankingScene.fxml"));
             Parent root = loader.load();
 
-            BankingSceneController bankingSceneController=loader.getController();
+            BankingSceneController bankingSceneController = loader.getController();
 
             bankingSceneController.setCustomer(getCustomer());
 
-            Stage stage =(Stage)((Node)event.getSource()).getScene().getWindow();
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.show();

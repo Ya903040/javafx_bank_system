@@ -53,7 +53,7 @@ public class LogInSceneController implements Initializable {
                 passwordField.getText());
 
         // if customer exists, log them in
-        if (customer!=null) {
+        if (customer != null) {
 //1
             try {
 
@@ -61,15 +61,15 @@ public class LogInSceneController implements Initializable {
                 loader.setLocation(getClass().getResource("/view/BankingScene.fxml"));
                 Parent root = loader.load();
 
-            BankingSceneController bankingSceneController=loader.getController();
+                BankingSceneController bankingSceneController = loader.getController();
 
-            //pass customer to BankingSceneController
-            bankingSceneController.setCustomer(customer);
+                //pass customer to BankingSceneController
+                bankingSceneController.setCustomer(customer);
 
-            Stage stage =(Stage)((Node)event.getSource()).getScene().getWindow();
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                Scene scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
 
             } catch (IOException e) {
                 e.printStackTrace();
