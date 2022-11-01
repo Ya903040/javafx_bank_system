@@ -83,7 +83,6 @@ public class LogInSceneController implements Initializable {
     public void switchToRegisterScene(ActionEvent event) {
         try {
 
-            //Parent root =FXMLLoader.load(getClass().getResource("../resources/RegisterScene.fxml")); TODO: REMOVE
 
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/view/RegisterScene.fxml"));
