@@ -20,8 +20,8 @@ Prototype is a creational design pattern that allows cloning objects, even compl
     
     
     this is a banal banking system
-    ![image](https://user-images.githubusercontent.com/74898205/199306988-3f7a88a1-b1ff-4f5d-ad5f-7cc0d55430eb.png)
-    ![image](https://user-images.githubusercontent.com/74898205/199307032-39613ea3-236f-486f-8ac5-296f03eb5345.png)
-    ![image](https://user-images.githubusercontent.com/74898205/199307229-eda459c4-1db6-4965-8c03-cc2479c15234.png)
+  ![image](https://user-images.githubusercontent.com/74898205/199306988-3f7a88a1-b1ff-4f5d-ad5f-7cc0d55430eb.png)
+  ![image](https://user-images.githubusercontent.com/74898205/199307032-39613ea3-236f-486f-8ac5-296f03eb5345.png)
+  ![image](https://user-images.githubusercontent.com/74898205/199307229-eda459c4-1db6-4965-8c03-cc2479c15234.png)
 
 
