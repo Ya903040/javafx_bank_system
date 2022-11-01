@@ -23,6 +23,8 @@ import java.util.ResourceBundle;
 
 public class TransferSceneController implements Initializable {
 
+    public Button backButton;
+    public Button resetButton;
     @FXML
     private Button transactionButton, idButton;
 

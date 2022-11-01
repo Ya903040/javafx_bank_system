@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import main.java.Customer;
@@ -15,6 +16,12 @@ import main.java.Helper;
 import java.io.IOException;
 
 public class BankingSceneController {
+
+    public Button depositButton;
+    public Button withdrawalButton;
+    public Button signOutButton;
+    public Button transferButton;
+
 
     @FXML
     private Label nameLabel,balanceLabel,idLabel;

@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import main.java.Customer;
 import main.java.CustomerDbUtil;
@@ -19,6 +20,22 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class WithdrawalSceneController implements Initializable {
+
+    public AnchorPane emailNameTextField;
+    public Button one;
+    public Button two;
+    public Button three;
+    public Button four;
+    public Button five;
+    public Button six;
+    public Button seven;
+    public Button eight;
+    public Button nine;
+    public Button zero;
+    public Button backButton;
+    public Button resetButton;
+    public Button withdrawButton;
+
 
     private Customer customer;
     private CustomerDbUtil customerDbUtil;

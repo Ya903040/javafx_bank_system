@@ -10,6 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import main.java.Customer;
 import main.java.CustomerDbUtil;
@@ -20,6 +21,16 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class DepositSceneController implements Initializable {
+
+    public Button tenButton;
+    public AnchorPane emailNameTextField;
+    public Button fiveButton;
+    public Button fiftyButton;
+    public Button hundredButton;
+    public Button depositButton;
+    public Button resetButton;
+    public Button backButton;
+
 
     private CustomerDbUtil customerDbUtil;
 

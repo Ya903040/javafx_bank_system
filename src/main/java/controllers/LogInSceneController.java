@@ -11,6 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import main.java.Customer;
 import main.java.CustomerDbUtil;
@@ -20,6 +21,11 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class LogInSceneController implements Initializable {
+
+    public AnchorPane pane;
+    public Label emailLabel;
+    public Label passwordLabel;
+
 
     private CustomerDbUtil customerDbUtil;
 
